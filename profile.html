@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Profile</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+     <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+     <!-- Firebase -->
+   <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-auth.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+   <script src="assets/js/profile.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row top">
+        <div class="col-md-12">
+          <button class="btn btn-default float-right" id="signOutBtn" style="margin-top:5px" onclick="signout()">Sign Out</button>
+          <form class="form-horizontal">
+            <fieldset>
+              <legend style="padding-top:5px" >Edit Profile</legend>
+              <hr>
+                <div class="row justify-content-center text-center">
+                <div class="col-md-4 align-self-center">
+                  <div id="proPic">
+
+                  </div>
+                  <!-- <img src="http://via.placeholder.com/150x150" id="proPic" class="img-fluid rounded-circle"> -->
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="fname" class="control-label">First Name:</label>
+                  <input type="text" name="fname" id="firstName" placeholder="First Name" class="form-control" required>
+                <label for="lname" class="control-label">Last Name:</label>
+                  <input type="text" name="lname" placeholder="Last Name" id="lastName" class="form-control" required>
+                <label for="phonenum" class="control-label">Phone Number</label>
+                  <input type="tel" name="phonenum" placeholder="Eg. 9123456789" id="phoneNumber" class="form-control" required>
+                <label for="dob" class="control-label">Date of Birth</label>
+                  <input type="date" name="dob" class="form-control date" id="dateOfBirth" required>
+                <label for="gender" class="control-label">Gender</label>
+                  <select name="gender" class="form-control input-xlarge" id="gender" required>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  <label for="place" class="control-label">City/Town/Village</label>
+                    <input type="text" name="lname" placeholder="Eg. Hyderbad" id="location" class="form-control" required>
+                  <label for="domainOfWork" class="control-label">Domain of Work</label>
+                    <input type="text" name="workName" placeholder="Eg. Carpenter" id="workName" class="form-control" required>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col-md-4 pull-md-3 offset-md-2">
+                  <input type="button" name="saveProfileBtn" id="saveProfile" class="btn btn-light btn-block" value="Save Profile" onclick="profile()">
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
