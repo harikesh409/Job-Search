@@ -42,7 +42,7 @@ var config = {
      var location = $("#location").val();
      var workDomain = $("#workName").val();
      var user = sessionStorage.getItem("UID");
-     user.updateProfile({
+     firebase.auth().currentUser.uid.updateProfile({
        displayName:firstName
      }).then(function(){
        console.log("Updated display Name");
