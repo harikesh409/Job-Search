@@ -167,3 +167,28 @@ function googleSignIn() {
   firebase.auth().signOut();
 }
 }
+function fbSignIn() {
+  if (!firebase.auth().currentUser) {
+    var provider = new firebase.auth.FacebookAuthProvider();
+    provider.addScope('email');
+    provider.addScope('public_profile');
+    provider.addScope('user_location');
+    provider.setCustomParameters({
+      'display': 'popup'
+    });
+    firebase.auth().signInWithPopup(provider).then(function(result){
+      var token = result.credential.accessToken;
+      var user = result.user;
+      window.sessionStorage.setItem("UID",user.uid);
+      window.sessionStorage.setItem("email",user.email);
+    }).catch(function(error){
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      var email = error.email;
+      var credential = error.credential;
+    });
+  }
+  else {
+    firebase.auth().signOut();
+  }
+}
