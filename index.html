@@ -11,24 +11,6 @@
     <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
     <script src="assets/js/index.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script>
-
-    // function googleSignIn() {
-    //   var provider = new firebase.auth.GoogleAuthProvider();
-    //   provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-    //   firebase.auth().signInWithPopup(provider).then(function(result){
-    //     console.log("In oauth");
-    //     var token = result.credential.accessToken;
-    //     var user = result.user;
-    //   }).catch(function(error){
-    //     var errorCode = error.code;
-    //     var errorMessage = error.message;
-    //     var email = error.email;
-    //     var credential = error.credential;
-    //   });
-    // }
-
-    </script>
   </head>
 <body>
 <div class="container">
@@ -55,6 +37,9 @@
                   <p><b>OR</b></p>
                   <div class="col-xs-12 form-group">
                         <input type="button" onclick="googleSignIn();" name="gSignIn" id="gSignIn" tabindex="4" class="form-control btn btn-login" value="Sign in With Google">
+                  </div>
+                  <div class="col-xs-12 form-group">
+                        <input type="button" onclick="fbSignIn()" name="fSignIn" id="fSignIn" tabindex="4" class="form-control btn btn-login" value="Sign in With Facebook">
                   </div>
               </form>
               <form id="register-form" action="#" method="post" role="form" style="display: none;">
