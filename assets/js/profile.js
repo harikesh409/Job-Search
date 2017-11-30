@@ -41,9 +41,12 @@ var config = {
      var gender = $("#gender").val();
      var location = $("#location").val();
      var workDomain = $("#workName").val();
+      var url = 'https://pikmail.herokuapp.com/'+sessionMail+'?size=150';
      var user = sessionStorage.getItem("UID");
      firebase.auth().currentUser.uid.updateProfile({
-       displayName:firstName
+       displayName:firstName,
+       photoURL:url,
+       phoneNumber:phoneNumber
      }).then(function(){
        console.log("Updated display Name");
      });
