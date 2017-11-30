@@ -213,6 +213,13 @@ label {
 #signOutBtn:hover,#signOutBtn:focus {
   cursor: pointer;
 }
+
+.white {
+color: #fff;
+}
+.gray {
+  color: #808080;
+}
 /*
 .ebdr {
   border-style: solid;
