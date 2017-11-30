@@ -210,7 +210,7 @@ label {
   color: #2d3b55;
 }
 
-#signOutBtn {
+#signOutBtn:hover,#signOutBtn:focus {
   cursor: pointer;
 }
 /*
