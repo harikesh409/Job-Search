@@ -209,6 +209,10 @@ label {
 .fa {
   color: #2d3b55;
 }
+
+#signOutBtn {
+  cursor: pointer;
+}
 /*
 .ebdr {
   border-style: solid;
