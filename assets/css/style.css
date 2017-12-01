@@ -15,6 +15,7 @@ label {
 }
 .panel-login {
    border: none;
+   height: 450px;
   -webkit-box-shadow: 0px 0px 49px 14px rgba(188,190,194,0.39);
   -moz-box-shadow: 0px 0px 49px 14px rgba(188,190,194,0.39);
   box-shadow: 0px 0px 49px 14px rgba(188,190,194,0.39);
@@ -73,6 +74,7 @@ label {
 }
 .panel-login>.panel-heading .tabs{
   padding: 0;
+  /*margin-top: 45px;*/
 }
 .panel-login h2{
   font-size: 20px;
@@ -90,6 +92,7 @@ label {
   border-top-right-radius: 0px;
   border-bottom: 0px;
   padding: 0px 15px;
+  margin-top: 45px;
 }
 .panel-login .form-group {
   padding: 0 30px;
