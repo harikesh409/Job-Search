@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Job Search</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/socialBtns.css">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
     <script src="assets/js/index.js"></script>
@@ -35,18 +37,28 @@
                         <input type="button" onclick="toggleSignIn();" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
                   </div>
                   <p><b>OR</b></p>
-                  <div class="col-xs-12 form-group">
-                        <input type="button" onclick="googleSignIn();" name="gSignIn" id="gSignIn" tabindex="4" class="form-control btn btn-login" value="Sign in With Google">
+                  <div class="col-md-12">
+                        <!-- <input type="button" onclick="googleSignIn();" name="gSignIn" id="gSignIn" tabindex="4" class="form-control btn btn-login" value="Sign in With Google"> -->
+                        <div class="wrapper">
+                          <ul>
+                            <li class="facebook">
+                              <i class="fa fa-facebook fa-2x" aria-hidden="true" onclick="fbSignIn();"></i>
+                            </li>
+                            <li class="google">
+                              <i class="fa fa-google fa-2x" aria-hidden="true" onclick="googleSignIn();"></i>
+                            </li>
+                          </ul>
+                        </div>
                   </div>
-                  <div class="col-xs-12 form-group">
+                  <!-- <div class="col-xs-12 form-group">
                         <input type="button" onclick="fbSignIn()" name="fSignIn" id="fSignIn" tabindex="4" class="form-control btn btn-login" value="Sign in With Facebook">
-                  </div>
+                  </div> -->
               </form>
               <form id="register-form" action="#" method="post" role="form" style="display: none;">
                 <h2>REGISTER</h2>
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-user fa-lg"></i></span>
-                    <input type="text" name="username" id="username1" tabindex="1" class="form-control" placeholder=" Full Name"  required>
+                    <input type="text" name="username" id="username1" tabindex="1" class="form-control" placeholder="Username"  required>
                   </div><br/>
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
@@ -71,6 +83,7 @@
                       </div>
                     </div>
                   </div>
+                  
               </form>
               <p id="err"></p>
             </div>
