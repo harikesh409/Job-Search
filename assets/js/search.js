@@ -11,6 +11,7 @@ var config = {
 $(document).ready(function() {
   $("#searchBtn").click(function(event) {
     var domain = $("#searchTxt").val();
+    domain = domain.toLowerCase();
     var database = firebase.database();
     var dm="";
     // console.log(domain);
