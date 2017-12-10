@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Verify Email</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script>
+    var config = {
+      apiKey: "AIzaSyB5g0mK6MqouG8BSXrRog4ZHKbnWhdS72Y",
+      authDomain: "job-search-4fab8.firebaseapp.com",
+      databaseURL: "https://job-search-4fab8.firebaseio.com",
+      projectId: "job-search-4fab8",
+      storageBucket: "job-search-4fab8.appspot.com",
+      messagingSenderId: "333432225904"
+    };
+     firebase.initializeApp(config)
+     $(document).ready(function() {
+       window.mailver = function(){
+       var user = firebase.auth().currentUser;
+       if(user.emailVerified) {
+         console.log("tt");
+         $("#profile").removeAttr('disabled');
+         $("#profile").removeClass('disable')
+         $("#profile").addClass('btn-login');
+         $("#resend").attr('disabled', 'disabled');
+         $("#resend").addClass('disable');
+         $("#resend").removeClass('btn-login');
+         window.location = "profile.html";
+       } else {
+         user.sendEmailVerification().then(function(){
+           alert("Verification mail sent kindly verify it");
+         }).catch(function(error){
+           console.log("Error");
+         });
+       }
+       }
+       $("#profile").click(function(event) {
+         window.location = "profile.html";
+       });
+     });
+    </script>
+    <style>
+    .disable {
+      cursor:not-allowed;
+    }
+    </style>
+  </head>
+  <body>
+    <!-- <div class="container">
+    <div class="row">
+    <div class="col">
+      <button class="btn btn-primary btn-block align-self center" style="margin-top:250px" onclick="mailver()">Resend Verification Mail</button>
+    </div>
+    </div>
+    </div>
+   -->
+   <div class="container">
+      <div class="row text-center justify-content-center">
+       <div class="col-md-6 col-md-offset-3">
+         <div class="panel panel-login">
+           <div class="panel-body">
+             <div class="row">
+               <div class="col-lg-12">
+                 <form method="get" action="#" onsubmit="mailver();">
+                   <h2>Verify Your Mail ID</h2>
+                 <div class="input-group">
+                   <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                   <input type="email" tabindex="1" class="form-control" placeholder=" Email" required>
+                 </div><br/>
+                <div class="col-xs-12 form-group center-block">
+                  <input type="submit" id="resend" class="form-control btn btn-login" value="Resend Verification Mail"/>
+                 </div>
+                 <div class="col-xs-12 form-group center-block">
+                   <input type="button" id="profile" class="form-control btn disable" value="Proceed to Profile" disabled/>
+                 </div>
+               </form>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
