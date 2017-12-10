@@ -48,6 +48,7 @@ $('#register-submit').click(function(e) {
   } else {
     handleSignUp();
   }
+
 });
 });
 function handleSignUp() {
@@ -68,11 +69,27 @@ firebase.auth().createUserWithEmailAndPassword(email, password)
     pass: password,
     jType: jtype
   });
+  var picurl = 'https://pikmail.herokuapp.com/'+email+'?size=150'
+  firebase.auth().currentUser.updateProfile({
+    displayName:fname,
+    photoURL:[picurl]
+  });
+  firebase.auth().currentUser.sendEmailVerification().then(function(){
+    alert("Verification mail sent kindly verify it");
+  }).catch(function(error){
+    console.log("Error");
+  });
   // alert("Account created you can login");
   // $("#login-form-link").click();
-  setTimeout(function(){
-    window.location.href = "index.html";
-  },3000);
+  firebase.auth().onAuthStateChanged(function(user) {
+    if(user) {
+      window.location.href = "index.html";
+    }
+  });
+
+  // setTimeout(function(){
+  //   window.location.href = "index.html";
+  // },3000);
 
 })
 .catch(function(error) {
@@ -91,6 +108,7 @@ firebase.auth().createUserWithEmailAndPassword(email, password)
 // [END createwithemail]
 }
 function toggleSignIn() {
+  
 if (firebase.auth().currentUser) {
   // [START signout]
   firebase.auth().signOut();
@@ -110,12 +128,17 @@ if (firebase.auth().currentUser) {
   // [START authwithemail]
   firebase.auth().signInWithEmailAndPassword(email, password)
   .then(function(firebaseuser) {
-    alert(firebaseuser.uid);
+    // alert(firebaseuser.uid);
     firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
+      if (user && user.emailVerified) {
         window.sessionStorage.setItem("UID",user.uid);
         window.sessionStorage.setItem("email",user.email);
         window.location = 'profile.html';
+      } else {
+        window.sessionStorage.setItem("UID",user.uid);
+        window.sessionStorage.setItem("email",user.email);
+        window.location = 'verify.html';
+        alert("Please verify your email address!");
       }
     });
   })
@@ -150,7 +173,7 @@ else {
 function googleSignIn() {
   if (!firebase.auth().currentUser) {
   var provider = new firebase.auth.GoogleAuthProvider();
-  provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+  // provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
   firebase.auth().signInWithPopup(provider).then(function(result){
     var token = result.credential.accessToken;
     var user = result.user;
@@ -179,7 +202,7 @@ function fbSignIn() {
     firebase.auth().signInWithPopup(provider).then(function(result){
       var token = result.credential.accessToken;
       var user = result.user;
-      window.sessionStorage.setItem("UID",user.uid);
+      window.sessionStorage.setItem("UID",firebase.auth().currentUser.uid);
       window.sessionStorage.setItem("email",user.email);
     }).catch(function(error){
       var errorCode = error.code;
