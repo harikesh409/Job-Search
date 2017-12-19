@@ -29,7 +29,7 @@ var config = {
 
      database.ref('/users').child(user).on('value',function(snapshot){
        var workDomain = snapshot.val().workDomain;
-       if(workDomain == null) {
+       if(workDomain == null || workDomain == "") {
          window.location.href = "profile.html";
        }
        var firstName = snapshot.val().firstName;
