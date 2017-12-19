@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
      <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
      <!-- Firebase -->
    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script>
    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-auth.js"></script>
@@ -18,32 +19,77 @@
    <link rel="stylesheet" href="assets/css/style.css">
   </head>
   <body onload="viewProfile();">
+    <!---Navigation Bar --->
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+    <a class="navbar-brand" href="#">Job Search</a>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Career Building</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Our Companies</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About Us</a>
+      </li>
+
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="nav-item mr-2" >
+        <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-outline-warning navbar-btn" >
+           <span class="fa fa-search" aria-hidden="true" style="color:white"></span></button><br/>
+      </li>
+      <li class="nav-item">
+          <input type="button" class="form-control mr-sm-2 btn btn-outline-warning" value="SIGN OUT" onclick="signout()">
+        </li>
+      </ul>
+    </nav>
+    <div class="modal fade bd-example-modal-lg text-center" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+      <div class="modal-dialog modal-lg" role="document" >
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <form class="navbar-form " role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+              </div>
+              <button type="submit" class="btn btn-default btn-outline-dark">Search <span class="fa fa-search" aria-hidden="true" onclick="location.href = 'search.html'" ></span></button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Information -->
+    <!-- <button class="btn btn-default float-right" id="signOutBtn" style="margin-top:5px" onclick="signout()">Sign Out</button> -->
     <div class="container">
       <div class="row top">
         <div class="col-md-12">
-          <button class="btn btn-default float-right" id="signOutBtn" style="margin-top:5px" onclick="signout()">Sign Out</button>
-
-              <legend style="padding-top:5px" >My Profile</legend>
-
+              <h2 style="padding-top:5px" >My Profile</h2>
+                <hr/>
                 <div class="row justify-content-center text-center">
-                <div class="col-md-4 align-self-center"><img src="http://via.placeholder.com/150x150" class="img-fluid rounded-circle"></div>
+                <div class="col-md-4 align-self-center" id="proPic"></div>
                 </div>
                 <br/>
                 <div class="card card-inverse" style="background-color: #333; border-color: #333;">
                   <div class="card-block">
-                    <p class="card-text text-center gray">First Name</p>
+                    <p class="card-text text-center gray font-weight-bold">First Name</p>
                     <h3 class="card-title text-center white" id="firstName"></h3>
-                    <p class="card-text text-center gray">Last Name</p>
+                    <p class="card-text text-center gray font-weight-bold">Last Name</p>
                     <h3 class="card-title text-center white" id="lastName"></h3>
-                    <p class="card-text text-center gray">Phone Number</p>
+                    <p class="card-text text-center gray font-weight-bold">Phone Number</p>
                     <h3 class="card-title text-center white" id="phoneNumber"></h3>
-                    <p class="card-text text-center gray">Gender</p>
+                    <p class="card-text text-center gray font-weight-bold">Gender</p>
                     <h3 class="card-title text-center white" id="gender"></h3>
-                    <p class="card-text text-center gray">Date of Birth</p>
+                    <p class="card-text text-center gray font-weight-bold">Date of Birth</p>
                     <h3 class="card-title text-center white" id="dob"></h3>
-                    <p class="card-text text-center gray">Location</p>
+                    <p class="card-text text-center gray font-weight-bold">Location</p>
                     <h3 class="card-title text-center white" id="place"></h3>
-                    <p class="card-text text-center gray">Domain of Work</p>
+                    <p class="card-text text-center gray font-weight-bold">Domain of Work</p>
                     <h3 class="card-title text-center white" id="workDomain"></h3>
                     <br/><div class="text-center"><a href="profile.html" class="btn btn-primary" style="background-color:#2d3b55;">Edit Profile</a></div><br/>
                   </div>
