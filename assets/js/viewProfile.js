@@ -28,13 +28,17 @@ var config = {
      var user = sessionStorage.getItem("UID");
 
      database.ref('/users').child(user).on('value',function(snapshot){
+       var workDomain = snapshot.val().workDomain;
+       if(workDomain == null) {
+         window.location.href = "profile.html";
+       }
        var firstName = snapshot.val().firstName;
        var lastName = snapshot.val().lastName;
        var phoneNumber = snapshot.val().phoneNumber;
        var gender = snapshot.val().gender;
        var dob = snapshot.val().dateOfBirth;
        var place = snapshot.val().place;
-       var workDomain = snapshot.val().workDomain;
+       var url = firebase.auth().currentUser.photoURL;
 
        $("#firstName").html(firstName);
        $("#lastName").html(lastName);
@@ -43,7 +47,7 @@ var config = {
        $("#dob").html(dob);
        $("#place").html(place);
        $("#workDomain").html(workDomain);
-
+       $("#proPic").html('<img src="'+url+'" class="img-fluid rounded-circle">');
        console.log(place);
 
      });
