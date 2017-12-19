@@ -44,7 +44,7 @@ var config = {
       workDomain = workDomain.toLowerCase();
       var url = 'https://pikmail.herokuapp.com/'+sessionMail+'?size=150';
      var user = sessionStorage.getItem("UID");
-     firebase.auth().currentUser.uid.updateProfile({
+     firebase.auth().currentUser.updateProfile({
        displayName:firstName,
        photoURL:url,
        phoneNumber:phoneNumber
