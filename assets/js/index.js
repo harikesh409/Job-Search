@@ -262,6 +262,7 @@ function fbSignIn() {
       var user = result.user;
       window.sessionStorage.setItem("UID",firebase.auth().currentUser.uid);
       window.sessionStorage.setItem("email",user.email);
+      window.location = 'viewProfile.html';
     }).catch(function(error){
       var errorCode = error.code;
       var errorMessage = error.message;
