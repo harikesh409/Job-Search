@@ -11,27 +11,30 @@ var config = {
  var user = sessionStorage.getItem("UID");
   if(user == null) {
      alert("You are logged out!");
-     console.log("logged out");
+     //console.log("logged out");
      window.location.href = "index.html";
  }
  function signout(){
    firebase.auth().signOut().then(function() {
      console.log('Signed Out');
      sessionStorage.removeItem("UID");
+     sessionStorage.removeItem("email");
      window.location.href = "index.html";
    });
  }
     function viewProfile(){
-
-     console.log("In viewProfile()")
+     //console.log("In viewProfile()")
      var database = firebase.database();
      var user = sessionStorage.getItem("UID");
-
      database.ref('/users').child(user).on('value',function(snapshot){
-       var workDomain = snapshot.val().workDomain;
-       if(workDomain == null || workDomain == "") {
+       if(snapshot.val() == null){
          window.location.href = "profile.html";
-       }
+       } else {
+         var workDomain = snapshot.val().workDomain;
+         if(workDomain == null || workDomain == "") {
+           window.location.href = "profile.html";
+         }
+     }
        var firstName = snapshot.val().firstName;
        var lastName = snapshot.val().lastName;
        var phoneNumber = snapshot.val().phoneNumber;
@@ -49,8 +52,5 @@ var config = {
        $("#workDomain").html(workDomain);
        $("#proPic").html('<img src="'+url+'" class="img-fluid rounded-circle">');
        console.log(place);
-
      });
-
-
    }
