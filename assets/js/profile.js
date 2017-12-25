@@ -28,6 +28,7 @@ var config = {
    firebase.auth().signOut().then(function() {
      console.log('Signed Out');
      sessionStorage.removeItem("UID");
+     sessionStorage.removeItem("email");
      window.location.href = "index.html";
    });
  }
